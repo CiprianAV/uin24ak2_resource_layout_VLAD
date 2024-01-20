@@ -2,11 +2,16 @@ body {
     margin: 0;
     font-family: Arial, sans-serif;
     background-color: #E1E5EE;
+    box-sizing: border-box;
+}
+
+* {
+    box-sizing: inherit;
 }
 
 .container {
-    max-width: 800px;
-    margin: 100px auto 0;
+    max-width: 1600px;
+    margin: 200px auto 0;
 }
 
 .tabs {
@@ -17,14 +22,15 @@ body {
 
 .tab {
     flex: 1;
-    padding: 10px 20px;
+    padding: 10px;
     cursor: pointer;
-    border-bottom: 2px solid #ddd;
     text-align: center;
+    box-sizing: border-box;
 }
 
-.tab:hover {
-    border-right: none;
+.tab:not(:last-child) {
+    margin-right: 20px; /* Add a small margin between tabs */
+    border-right: 2px solid transparent; /* Transparent gap */
 }
 
 .tab-content {
@@ -36,4 +42,3 @@ body {
     display: block;
     background-color: #fff;
 }
-

@@ -1,6 +1,6 @@
 body {
     margin: 0;
-    font-family: Arial, sans-serif;
+    font-family: 'Montserrat', sans-serif;
     background-color: #E1E5EE;
     box-sizing: border-box;
 }
@@ -14,28 +14,34 @@ body {
     margin: 200px auto 0;
 }
 
-.tabs {
-    display: flex;
-    background-color: #2A324B;
-    border-radius: 5px;
-}
-
 .tab {
     flex: 1;
-    padding: 10px;
+    padding: 30px; /* Adjusted to double the height */
     cursor: pointer;
     text-align: center;
     box-sizing: border-box;
+    position: relative;
+    background-color: #2A324B;
+    margin-right: 20px; /* Adjusted to 10px for the gap size */
+    font-weight: 1000; /* Very bold text */
+    color: white; /* Set text color to white */
 }
 
-.tab:not(:last-child) {
-    margin-right: 20px; /* Add a small margin between tabs */
-    border-right: 2px solid transparent; /* Transparent gap */
+.tab:last-child {
+    margin-right: 0; /* Remove margin for the last tab to avoid extra space */
+}
+
+.tabs {
+    display: flex;
+    background-color: #E1E5EE; /* Match the body background color */
+    border-radius: 5px;
+    overflow: hidden; /* Ensure the background color doesn't extend into the tabs */
 }
 
 .tab-content {
     display: none;
-    padding: 20px;
+    padding: 40px;
+    padding-left: 70px; /* Adjust the padding as needed */
 }
 
 .tab-content.show {

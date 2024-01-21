@@ -1,23 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
-    var tabs = document.querySelectorAll('.tab');
-    tabs.forEach(function (tab) {
-        tab.addEventListener('click', function () {
-            var tabId = this.getAttribute('id').replace('tab', 'content');
-            showTab(tabId);
-        });
-    });
-
-    function showTab(tabId) {
-        var tabContents = document.querySelectorAll('.tab-content');
-        tabContents.forEach(function (content) {
-            content.classList.remove('show');
-        });
-
-        document.getElementById(tabId).classList.add('show');
-    }
-
-
-
+    var tabsContainer = document.getElementById('tabsContainer');
+    var contentContainer = document.getElementById('contentContainer');
 
 
     
@@ -126,29 +109,29 @@ document.addEventListener('DOMContentLoaded', function () {
         // Create tab
         var tab = document.createElement('div');
         tab.className = 'tab';
-        tab.id = 'tab' + (index + 1);
         tab.innerText = resource.category;
-        tab.addEventListener('click', function () {
-            showTab(index + 1);
-        });
 
         // Create content
         var content = document.createElement('div');
         content.className = 'tab-content';
-        content.id = 'content' + (index + 1);
-        content.innerHTML = `<p>${resource.text}</p>`;
-
+        content.innerHTML = `<h2>${resource.category}</h2><p class="tab-text">${resource.text}</p><ul>${resource.sources.map(source => `<li><a href="${source.url}" target="_blank">${source.title}</a></li>`).join('')}</ul>`;
         // Append tab and content to containers
         tabsContainer.appendChild(tab);
         contentContainer.appendChild(content);
+
+        // Add click event to show the content when a tab is clicked
+        tab.addEventListener('click', function () {
+            // Hide all tab contents
+            document.querySelectorAll('.tab-content').forEach(function (content) {
+                content.classList.remove('show');
+            });
+
+            // Show the selected tab content
+            content.classList.add('show');
+        });
     });
 
-    function showTab(tabIndex) {
-        var tabContents = document.querySelectorAll('.tab-content');
-        tabContents.forEach(function (content) {
-            content.classList.remove('show');
-        });
-
-        document.getElementById('content' + tabIndex).classList.add('show');
-    }
+    // Initial tab display
+    tabsContainer.children[0].classList.add('active');
+    contentContainer.children[0].classList.add('show');
 });

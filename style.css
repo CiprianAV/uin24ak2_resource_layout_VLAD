@@ -1,6 +1,6 @@
 body {
     margin: 0;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Roboto', sans-serif;
     background-color: #E1E5EE;
     box-sizing: border-box;
 }
@@ -16,35 +16,43 @@ body {
 
 .tab {
     flex: 1;
-    padding: 30px; /* Adjusted to double the height */
+    flex-grow: 1;
+    padding: 32px; 
     cursor: pointer;
     text-align: center;
     box-sizing: border-box;
     position: relative;
     background-color: #2A324B;
-    margin-right: 20px; /* Adjusted to 10px for the gap size */
-    font-weight: 1000; /* Very bold text */
-    color: white; /* Set text color to white */
+    margin-right: 20px; 
+    font-weight: 1000; 
+    font-size: 24px;
+    color: white; 
 }
 
 .tab:last-child {
-    margin-right: 0; /* Remove margin for the last tab to avoid extra space */
+    margin-right: 0; 
+    flex-grow: 1.6;
 }
 
 .tabs {
     display: flex;
-    background-color: #E1E5EE; /* Match the body background color */
-    border-radius: 5px;
-    overflow: hidden; /* Ensure the background color doesn't extend into the tabs */
+    background-color: #E1E5EE; 
+    overflow: hidden; 
 }
 
 .tab-content {
     display: none;
-    padding: 40px;
-    padding-left: 70px; /* Adjust the padding as needed */
+    padding: 90px;
+    padding-left: 90px; 
+    font-size: 22px; 
 }
 
 .tab-content.show {
     display: block;
     background-color: #fff;
+}
+
+.tab.active {
+    background-color: #ffffff;
+    color: #2A324B; 
 }

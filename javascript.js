@@ -2,8 +2,6 @@ document.addEventListener('DOMContentLoaded', function () {
     var tabsContainer = document.getElementById('tabsContainer');
     var contentContainer = document.getElementById('contentContainer');
 
-
-    
     var resources = [
         {
             category: "HTML",
@@ -101,37 +99,33 @@ document.addEventListener('DOMContentLoaded', function () {
         },
     ];
 
-    var tabsContainer = document.getElementById('tabsContainer');
-    var contentContainer = document.getElementById('contentContainer');
-
-    // Populate tabs and content dynamically
     resources.forEach(function (resource, index) {
-        // Create tab
         var tab = document.createElement('div');
         tab.className = 'tab';
         tab.innerText = resource.category;
 
-        // Create content
         var content = document.createElement('div');
         content.className = 'tab-content';
-        content.innerHTML = `<h2>${resource.category}</h2><p class="tab-text">${resource.text}</p><ul>${resource.sources.map(source => `<li><a href="${source.url}" target="_blank">${source.title}</a></li>`).join('')}</ul>`;
-        // Append tab and content to containers
+        content.innerHTML = `<h2 style="color: #2A324B;">${resource.category}</h2><p class="tab-text">${resource.text}</p><ul>${resource.sources.map(source => `<li><a href="${source.url}" target="_blank">${source.title}</a></li>`).join('')}</ul>`;
+
         tabsContainer.appendChild(tab);
         contentContainer.appendChild(content);
 
-        // Add click event to show the content when a tab is clicked
         tab.addEventListener('click', function () {
-            // Hide all tab contents
+            document.querySelectorAll('.tab').forEach(function (tab) {
+                tab.classList.remove('active');
+            });
+
+            this.classList.add('active');
+
             document.querySelectorAll('.tab-content').forEach(function (content) {
                 content.classList.remove('show');
             });
 
-            // Show the selected tab content
-            content.classList.add('show');
+            contentContainer.children[index].classList.add('show');
         });
     });
 
-    // Initial tab display
     tabsContainer.children[0].classList.add('active');
     contentContainer.children[0].classList.add('show');
 });
